@@ -1,0 +1,423 @@
+/* ========================================
+   UI 原型变体样式（阶段二）
+   body.variant-a 深空极简 / body.variant-b 赛博霓虹 / body.variant-c 暗色杂志
+   定稿后将移除本文件与 prototype.ts
+   ======================================== */
+
+/* ---------- 原型切换器（浮动底部条） ---------- */
+.prototype-switcher {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 18px;
+    background: rgba(10, 10, 20, 0.92);
+    border: 1px solid rgba(102, 0, 255, 0.5);
+    border-radius: 50px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px);
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.prototype-switcher .ps-btn {
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(102, 0, 255, 0.25);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+}
+
+.prototype-switcher .ps-btn:hover {
+    background: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.prototype-switcher .ps-label {
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    min-width: 130px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* ========================================
+   Variant A —— 深空极简（基线精修）
+   ======================================== */
+body.variant-a .main-title {
+    background: linear-gradient(135deg, #ffffff 0%, #c9a0ff 50%, #66e0ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 25px rgba(102, 0, 255, 0.45));
+}
+
+body.variant-a .content-box,
+body.variant-a .gear-card,
+body.variant-a .page-card {
+    background: rgba(20, 20, 40, 0.55);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(102, 0, 255, 0.25);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+body.variant-a .divider {
+    background: linear-gradient(90deg, transparent, rgba(102, 0, 255, 0.7), transparent);
+    height: 2px;
+}
+
+/* ========================================
+   Variant B —— 赛博霓虹（全屏沉浸 + 辉光）
+   ======================================== */
+body.variant-b {
+    font-family: 'Consolas', 'Courier New', 'SF Mono', monospace;
+    background: #050510;
+}
+
+body.variant-b::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(ellipse 60% 40% at 20% 10%, rgba(102, 0, 255, 0.35), transparent),
+        radial-gradient(ellipse 50% 35% at 80% 30%, rgba(0, 229, 255, 0.22), transparent),
+        radial-gradient(ellipse 60% 45% at 50% 90%, rgba(170, 0, 255, 0.28), transparent),
+        #050510;
+    pointer-events: none;
+}
+
+body.variant-b #home {
+    background: transparent;
+}
+
+body.variant-b .main-title {
+    font-size: clamp(4rem, 12vw, 9rem);
+    letter-spacing: 0.12em;
+    color: #fff;
+    text-shadow:
+        0 0 10px #6600ff,
+        0 0 30px #6600ff,
+        0 0 70px #aa00ff,
+        0 0 120px #00e5ff;
+    animation: neon-flicker 4s infinite alternate;
+}
+
+@keyframes neon-flicker {
+    0%   { text-shadow: 0 0 10px #6600ff, 0 0 30px #6600ff, 0 0 70px #aa00ff, 0 0 120px #00e5ff; }
+    100% { text-shadow: 0 0 12px #00e5ff, 0 0 40px #6600ff, 0 0 80px #aa00ff, 0 0 140px #00e5ff; }
+}
+
+body.variant-b .logo-small {
+    font-family: inherit;
+    letter-spacing: 0.3em;
+    color: #66e0ff;
+    text-shadow: 0 0 12px rgba(102, 224, 255, 0.8);
+}
+
+body.variant-b .subtitle {
+    font-size: 1.6rem;
+    color: #66e0ff;
+    text-shadow: 0 0 10px rgba(102, 224, 255, 0.6);
+}
+
+body.variant-b .full-section {
+    background: transparent;
+    min-height: 100vh;
+}
+
+body.variant-b .section-main-title {
+    font-family: inherit;
+    letter-spacing: 0.2em;
+    color: #fff;
+    text-shadow:
+        0 0 10px #6600ff,
+        0 0 40px #6600ff;
+}
+
+body.variant-b .section-subtitle {
+    font-family: inherit;
+    letter-spacing: 0.1em;
+    color: #66e0ff;
+}
+
+/* 玻璃面板 + 霓虹渐变边框 */
+body.variant-b .content-box,
+body.variant-b .gear-card,
+body.variant-b .page-card {
+    background: rgba(10, 12, 30, 0.6);
+    backdrop-filter: blur(18px);
+    border: 1px solid transparent;
+    background-image:
+        linear-gradient(rgba(10, 12, 30, 0.6), rgba(10, 12, 30, 0.6)),
+        linear-gradient(135deg, #6600ff, #00e5ff, #aa00ff);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    box-shadow: 0 0 30px rgba(102, 0, 255, 0.25);
+}
+
+/* 右侧霓虹胶囊导航 */
+body.variant-b .side-navigation {
+    left: auto;
+    right: 30px;
+}
+
+body.variant-b .side-navigation::before {
+    left: auto;
+    right: 22px;
+    background: linear-gradient(to bottom, rgba(0, 229, 255, 0.3), rgba(102, 0, 255, 0.6), rgba(170, 0, 255, 0.3));
+}
+
+body.variant-b .nav-item {
+    background: rgba(10, 12, 30, 0.7);
+    border-color: rgba(0, 229, 255, 0.35);
+    font-family: inherit;
+}
+
+body.variant-b .nav-item:hover {
+    border-color: #00e5ff;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+    transform: translateX(-5px);
+}
+
+body.variant-b .nav-item.active {
+    background: linear-gradient(135deg, #6600ff, #00e5ff);
+    border-color: transparent;
+    box-shadow: 0 0 25px rgba(102, 0, 255, 0.8);
+}
+
+body.variant-b .nav-item.active::before {
+    background: #00e5ff;
+    box-shadow: 0 0 12px #00e5ff;
+}
+
+/* 霓虹分隔线 */
+body.variant-b .divider {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #6600ff, #00e5ff, #aa00ff, transparent);
+    box-shadow: 0 0 15px rgba(102, 0, 255, 0.6);
+}
+
+body.variant-b .divider-text {
+    color: #66e0ff;
+    letter-spacing: 0.2em;
+}
+
+/* 霓虹标签 */
+body.variant-b .game-tag {
+    background: rgba(0, 229, 255, 0.12);
+    border: 1px solid rgba(0, 229, 255, 0.5);
+    color: #66e0ff;
+    font-family: inherit;
+}
+
+/* 按钮霓虹 */
+body.variant-b .social-link {
+    border: 1px solid rgba(102, 0, 255, 0.5);
+    background: rgba(10, 12, 30, 0.6);
+    backdrop-filter: blur(8px);
+    font-family: inherit;
+}
+
+body.variant-b .scroll-down-arrow {
+    color: #66e0ff;
+    text-shadow: 0 0 12px rgba(102, 224, 255, 0.8);
+}
+
+/* ========================================
+   Variant C —— 暗色杂志（顶部导航 + 网格）
+   ======================================== */
+body.variant-c {
+    background: #16130f;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body.variant-c #home {
+    background:
+        radial-gradient(ellipse 70% 50% at 70% 20%, rgba(201, 168, 106, 0.18), transparent),
+        #16130f;
+}
+
+/* 顶部水平导航 */
+body.variant-c .side-navigation {
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: auto;
+    transform: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 20px;
+    background: rgba(22, 19, 15, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201, 168, 106, 0.25);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+body.variant-c .side-navigation::before {
+    display: none;
+}
+
+body.variant-c .nav-item {
+    margin-bottom: 0;
+    padding: 8px 18px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    min-width: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+body.variant-c .nav-item span {
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+body.variant-c .nav-item:hover {
+    transform: none;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+body.variant-c .nav-item.active {
+    background: transparent;
+    border-bottom: 2px solid #c9a86a;
+    box-shadow: none;
+}
+
+body.variant-c .nav-item.active::before {
+    display: none;
+}
+
+body.variant-c .nav-item i {
+    color: #c9a86a;
+}
+
+/* 杂志式标题 */
+body.variant-c .main-title {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    color: #f2ead8;
+    text-shadow: none;
+}
+
+body.variant-c .logo-small {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #c9a86a;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+body.variant-c .subtitle {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    color: #c9a86a;
+}
+
+/* 紧凑网格内容区 */
+body.variant-c .full-section {
+    background: #16130f;
+}
+
+body.variant-c .section-content-wrapper {
+    max-width: 1200px;
+    padding-top: 120px;
+}
+
+body.variant-c .section-main-title {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: #f2ead8;
+    text-shadow: none;
+}
+
+body.variant-c .section-subtitle {
+    color: #c9a86a;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    letter-spacing: 0.05em;
+}
+
+/* 卡片：细边框 + 暖色点缀 */
+body.variant-c .content-box,
+body.variant-c .gear-card,
+body.variant-c .page-card {
+    background: rgba(30, 26, 20, 0.8);
+    border: 1px solid rgba(201, 168, 106, 0.2);
+    border-radius: 4px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+body.variant-c .gear-card:hover,
+body.variant-c .page-card:hover {
+    border-color: #c9a86a;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(201, 168, 106, 0.15);
+}
+
+/* 双列网格 */
+body.variant-c .gear-grid,
+body.variant-c .pages-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+body.variant-c .game-tag {
+    background: rgba(201, 168, 106, 0.12);
+    border: 1px solid rgba(201, 168, 106, 0.4);
+    color: #d9c393;
+    border-radius: 2px;
+    font-family: Georgia, 'Times New Roman', serif;
+    letter-spacing: 0.06em;
+}
+
+body.variant-c .username {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #f2ead8;
+}
+
+body.variant-c .divider {
+    background: linear-gradient(90deg, transparent, rgba(201, 168, 106, 0.6), transparent);
+    height: 1px;
+}
+
+body.variant-c .divider-text {
+    color: #c9a86a;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    letter-spacing: 0.1em;
+}
+
+body.variant-c .social-link {
+    border: 1px solid rgba(201, 168, 106, 0.35);
+    background: transparent;
+    border-radius: 2px;
+    font-family: Georgia, 'Times New Roman', serif;
+    letter-spacing: 0.06em;
+}
+
+/* 杂志卡片入场预留（动画在 animations.ts） */
+body.variant-c .gear-card,
+body.variant-c .page-card {
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}

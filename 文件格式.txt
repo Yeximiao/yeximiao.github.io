@@ -1,13 +1,25 @@
-my-website/
-├── index.html
-├── css/
-│   ├── style.css       # 全局基础样式
-├── js/
-│   ├── main.js         # 主JavaScript功能
-├── images/
-│   ├── avatar1.jpg         # 头像
-│   ├── background1.jpg         # 背景图
-├── pages/
-│   ├── sensitivity-calculator.html         # 开镜灵敏度计算器
-│   ├── tournament-calculator.html         # 赛制计算器
-└──
+yeximiao.github.io/            # 喵の窝 - 个人空间（Vite + TS + GSAP）
+├── index.html                 # 入口页面
+├── package.json               # 依赖与脚本（dev / build / preview）
+├── vite.config.ts             # Vite 配置（base 根路径，GitHub Pages）
+├── tsconfig.json              # TypeScript 配置
+├── .github/workflows/
+│   └── deploy.yml             # GitHub Pages 自动构建部署
+├── src/
+│   ├── main.ts                # 入口模块
+│   ├── style.css              # 全局基础样式
+│   └── modules/
+│       ├── stars.ts           # 星空背景
+│       ├── mottos.ts          # 座右铭加载 + 打字机效果
+│       ├── scroll.ts          # 滚动行为（导航激活/分隔线进度/回顶）
+│       ├── nav.ts             # 侧边导航 + 工具卡片跳转
+│       ├── backgroundMode.ts  # 背景欣赏模式
+│       ├── clock.ts           # 北京时间 + 运行时长
+│       ├── favicon.ts         # 图标备用源 + 图片降级
+│       └── animations.ts      # GSAP 动画
+└── public/                    # 静态资源（原样拷贝到构建产物）
+    ├── images/                # 头像、背景图、favicon
+    ├── pages/
+    │   ├── sensitivity-calculator.html   # 开镜灵敏度计算器
+    │   └── tournament-calculator.html    # 赛制计算器
+    └── mottos.txt             # 座右铭数据源
