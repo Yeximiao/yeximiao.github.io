@@ -37,3 +37,9 @@ npm run preview # 本地预览构建产物
 
 推送到 `main` 分支后由 GitHub Actions 自动构建并部署。
 首次使用需在仓库 **Settings → Pages → Source** 选择 **"GitHub Actions"**。
+
+## 当前状态与 Roadmap
+
+- **当前**（2026-08-14）：Vite+TS+GSAP 架构已迁移完成，UI 三变体原型（A 深空极简 / B 赛博霓虹 / C 暗色杂志）已产出，待选定方向。
+- **下一步**：选定 UI 方向并打磨；内容更新（联系方式、社交媒体入口、VTB 身份页）。
+- **规划中**：与「全网独一无二数字身份」目标对齐的功能（见 MyMemories `项目/个人主页` 档案）。
