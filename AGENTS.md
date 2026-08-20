@@ -1,6 +1,6 @@
 # yeximiao.github.io 协作约定
 
-> 所有 AI 工具会话开工自动继承。完整规则见 `general/docs/多agent协作体系规范.md`。
+> **通用/跨项目规则唯一权威：`../workspace-root/AGENTS.root.md`**（`D:\Document\DeepSeekReasonixWork\workspace-root\AGENTS.root.md`，git 版本控制）。开工先 read_file 该文件；本文件只保留本项目特定约定。
 
 ## 串行交接协议
 
